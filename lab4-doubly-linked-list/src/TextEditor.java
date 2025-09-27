@@ -29,7 +29,12 @@ public class TextEditor {
         currentNode.next = null;
 
         // Build the new state by appending to current text
-        String updated = currentNode.textState + newText;
+        String updated;
+        if (currentNode.textState.isEmpty()) {
+            updated = newText;           
+        } else {
+            updated = currentNode.textState + " " + newText; 
+        }
 
         // Create and link the new node
         Node newest = new Node(updated, currentNode, null);
